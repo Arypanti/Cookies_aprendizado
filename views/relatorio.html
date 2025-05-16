@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Relatório de Manutenção</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+    }
+    h1 {
+      color: #c00;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    #data {
+      color: gray;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Relatório de Manutenção</h1>
+    <p id="dados">Carregando dados...</p>
+    <p id="data"></p>
+  </div>
+
+  <script>
+    function lerCookie(nome) {
+      const valor = document.cookie
+        .split("; ")
+        .find(row => row.startsWith(nome + "="))
+        ?.split("=")[1];
+      return valor ? decodeURIComponent(valor) : null;
+    }
+
+    const agora = new Date();
+    const dados = {
+      tecnico: lerCookie("TECNICO"),
+      placa: lerCookie("PLACA"),
+      servico: lerCookie("SERVICO"),
+      setor: lerCookie("SETOR"),
+      obs: lerCookie("OBS")
+    };
+
+    document.getElementById("dados").innerText =
+      `O técnico ${dados.tecnico} realizou "${dados.servico}" no veículo ${dados.placa}, setor ${dados.setor}. Obs: ${dados.obs || 'Nenhuma'}.`;
+
+    document.getElementById("data").innerText =
+      `Registro feito em ${agora.toLocaleDateString()} às ${agora.toLocaleTimeString()}`;
+
+    // Limpa os cookies (opcional)
+    document.cookie.split(";").forEach(c => {
+      document.cookie = c.split("=")[0] + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+    });
+  </script>
+</body>
+</html>

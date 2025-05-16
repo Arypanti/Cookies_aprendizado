@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registro de Manutenção Honda</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #c00;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #c00;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #a00;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Registro de Manutenção - Honda</h2>
+    <form action="/registrar" method="POST">
+      <label>Nome do Técnico:</label>
+      <input type="text" name="tecnico" required />
+
+      <label>Placa do Veículo:</label>
+      <input type="text" name="placa" required />
+
+      <label>Serviço Realizado:</label>
+      <select name="servico" required>
+        <option>Troca de óleo</option>
+        <option>Revisão geral</option>
+        <option>Alinhamento</option>
+        <option>Substituição de peças</option>
+      </select>
+
+      <label>Setor:</label>
+      <input type="text" name="setor" required />
+
+      <label>Observações:</label>
+      <textarea name="obs" rows="3"></textarea>
+
+      <button type="submit">Registrar</button>
+    </form>
+  </div>
+</body>
+</html>
